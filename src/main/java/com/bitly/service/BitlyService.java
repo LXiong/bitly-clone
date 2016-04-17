@@ -22,13 +22,13 @@ public class BitlyService {
     private ShortenDao dao;
     
     /**
-     * Return an ShortenLink object containing the original url and the shorten one.
+     * Return an ShortenLink object containing the original url and the shortened one.
      * The originalUrl argument must be in formal url format or exception will be thrown.
      * 
-     * A mapping between the originalUrl and the shorten one will be set in the database
+     * A mapping between the originalUrl and the shortened one will be set in the database
      *
-     * @param   originalUrl an absolue Http Url to be shorten
-     * @return              The shorten url together with the original one for reference
+     * @param   originalUrl an absolue Http Url to be shortened
+     * @return              The shortened url together with the original one for reference
      */
     public ShortenLink encode(String originalUrl) throws MalformedURLException{
         logger.info("encode url: {}", originalUrl);
@@ -54,6 +54,12 @@ public class BitlyService {
     }
     
     
+    /**
+     * Take a string hash value as input and return the original url
+     *
+     * @param   hash a string represent the shortened version of the url
+     * @return       The original url together with the shortened one for reference
+     */
     public ShortenLink decode(String hash) throws MalformedURLException {
         logger.info("decode hash: {}", hash);
         final URL shortenUrl = concatUrl(domainUrl, hash);
@@ -64,6 +70,11 @@ public class BitlyService {
     }
     
     
+    /**
+     * List the all the mapping of the shortened urls and the original urls stored in the database.
+     *
+     * @return The list of the shortened url together with the originals
+     */
     public List<ShortenLink> list() {
        logger.info("get all urls");
        return dao.getAllShortenLinks(); 

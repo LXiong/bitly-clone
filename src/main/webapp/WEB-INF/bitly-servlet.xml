@@ -24,12 +24,17 @@
         http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
 "> 
 
+    <context:property-placeholder location="file:${catalina.home}/conf/bitly.properties" order="-1" ignore-unresolvable="true"  local-override="true" ignore-resource-not-found="true" />
+    <context:property-placeholder location="file:${catalina.home}/conf/hibernate.properties" order="-1" ignore-unresolvable="true" local-override="true" ignore-resource-not-found="true" />
+    
     <context:component-scan base-package="com.bitly" />
     <context:annotation-config />
     <mvc:annotation-driven />
+    
+    <context:property-placeholder location="classpath:bitly.properties" ignore-unresolvable="true"  local-override="true" />
  
     <bean id="bitlyService" class="com.bitly.service.BitlyService"> 
-        <property name="domainUrl" value="https://on-device-research-test-josh1313.c9users.io/bitly-clone-0.1.0"/>
+        <property name="domainUrl" value="${bitly.domainUrl}"/>
         <property name="stringEncoder" ref="stringEncoder"/>
         <property name="shortenDao" ref="shortenDao"/>
     </bean>
@@ -37,7 +42,7 @@
     <bean id="stringEncoder" class="com.bitly.service.StringEncoderImpl">
         <property name="messageDigest">
             <bean class="java.security.MessageDigest" factory-method="getInstance"> 
-                <constructor-arg value="MD5"/>
+                <constructor-arg value="${bitly.hashMethod}"/>
             </bean>
         </property> 
     </bean>
@@ -46,7 +51,7 @@
     
     <!-- for data source and orm -->
     <tx:annotation-driven transaction-manager="transactionManager" /> 
-     <context:property-placeholder location="classpath:hibernate.properties"/>
+    <context:property-placeholder location="classpath:hibernate.properties" local-override="true"/>
 
     <bean id="dataSource" 
         class="org.springframework.jdbc.datasource.DriverManagerDataSource">
