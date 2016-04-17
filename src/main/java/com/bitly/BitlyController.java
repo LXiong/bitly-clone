@@ -18,6 +18,7 @@ import org.springframework.http.HttpStatus;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.List;
 
 import com.bitly.model.ShortenLink;
 import com.bitly.exception.InvalidUrlException;
@@ -33,6 +34,16 @@ public class BitlyController {
     
     @Autowired
     private BitlyService service;
+    
+    
+    @RequestMapping(
+        value="/",
+        method=RequestMethod.GET
+    )
+    @ResponseBody
+    public List<ShortenLink> list() {
+       return service.list(); 
+    }
     
     
     @RequestMapping(

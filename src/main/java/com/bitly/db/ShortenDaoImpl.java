@@ -7,8 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 import com.bitly.model.ShortenLink;
 import com.bitly.model.ShortenLinkDb;
+
 
 @Repository
 @Transactional(readOnly = true)
@@ -16,6 +19,16 @@ public class ShortenDaoImpl implements ShortenDao {
 
     @Autowired
     private SessionFactory sessionFactory;
+    
+    @Override
+    public List<ShortenLink> getAllShortenLinks() {
+          final String hql = "FROM ShortenLinkDb";
+          
+          Session session = sessionFactory.openSession();
+          Query query = session.createQuery(hql);
+          
+          return query.list();
+    }
  
     @Override
     public ShortenLink findByShortenUrl(String shortenUrl) {
