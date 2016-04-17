@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.CrossOrigin;
+
 
 import org.springframework.http.MediaType;
 import org.springframework.web.servlet.ModelAndView;
@@ -28,6 +30,7 @@ import com.bitly.service.BitlyService;
  *  Controller to handle the restful http request
  */
 @RestController
+@CrossOrigin
 public class BitlyController {
 
     private static final Logger logger = LogManager.getLogger(BitlyController.class);

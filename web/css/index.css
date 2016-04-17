@@ -1,0 +1,17 @@
+.blockShortenUrl {
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+
+#txtShortenUrl {
+	display:block;
+	margin-bottom: 25px; 
+	font-weight: bold
+}
+
+#shortenUrl {
+	display:block; 
+	border-style: dashed; 
+	border-color:red; 
+	font-size: 15pt
+}
