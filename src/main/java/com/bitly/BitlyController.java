@@ -24,7 +24,7 @@ import com.bitly.service.BitlyService;
 @RestController
 public class BitlyController {
 
-    private static final Logger logger = LogManager.getLogger(BitlyController.class.getName());
+    private static final Logger logger = LogManager.getLogger(BitlyController.class);
     
     @Autowired
     private BitlyService service;
