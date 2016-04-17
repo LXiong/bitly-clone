@@ -12,7 +12,7 @@ The following de-faco standard technologies were used for demostration purpose:
 * [Spring Framework] - for dependency injection and restful controller
 * [Hibernate] - for ORM
 * [Log4j2] - for logging
-* 
+* [JUnit] - for unit testing
 
 ## Installation
 1. deploy the bitly-clone.war to the servlet container
