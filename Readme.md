@@ -13,6 +13,7 @@ The following de-faco standard technologies were used for demostration purpose:
 * [Hibernate] - for ORM
 * [Log4j2] - for logging
 * [JUnit] - for unit testing
+* [JMock] - for mocking at unit testing
 
 ## Installation
 1. deploy the bitly-clone.war to the servlet container
