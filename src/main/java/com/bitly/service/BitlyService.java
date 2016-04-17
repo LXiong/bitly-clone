@@ -8,7 +8,8 @@ public class BitlyService {
     private URL domainUrl;
     private StringEncoder stringEncoder;
     
-    public ShortenLink shorten(final String originalUrl) throws MalformedURLException{
+    public ShortenLink shorten(String originalUrl) throws MalformedURLException{
+        originalUrl = new URL(originalUrl).toString();
         
         //check if the original url exists in the database
         
