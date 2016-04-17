@@ -6,7 +6,7 @@ The main function is:
 > Given an input url, create a 'shortened' url that will redirect a user to the  original content.
 
 ## Purpose
-To demostracte my java programming level and software engineering abaility, since this is initially a task from a technical test.
+To demostracte my java programming level and software engineering abaility, since this is originally a task from a technical test.
 
 The following de-faco standard technologies were used for demostration purpose:
 * [Spring Framework] - for dependency injection and restful controller
