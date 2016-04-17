@@ -9,13 +9,21 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.bitly.model.ShortenLink;
 import com.bitly.exception.ShortenLinkException;
 import com.bitly.service.BitlyService;
 
+/**
+ *  Controller to handle the restful http request
+ */
 @RestController
 public class BitlyController {
 
+    private static final Logger logger = LogManager.getLogger(BitlyController.class.getName());
+    
     @Autowired
     private BitlyService service;
 
@@ -24,6 +32,7 @@ public class BitlyController {
         try {
             return service.shorten(originalUrl);
         } catch(Exception e) {
+            logger.error("error occured!", e);
             throw new ShortenLinkException(e);
         }
     }
