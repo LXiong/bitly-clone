@@ -44,11 +44,14 @@ example response:
 {
   "originalUrl" : "http://apple.com/123/123",
   "shortenUrl": "https://bitly-clone.com/4999af664c462fb0c4edfc2171da1f9b"
+  "date":1460919344891
 },
 {
   "originalUrl" : "http://test.test.test.test.test.com",
   "shortenUrl": "https://bitly-clone.com/4999af67812k2fb0c4e12ee671da1fff"
-},
+  "date":1460919345892
+}
+]
 
 ```
 
