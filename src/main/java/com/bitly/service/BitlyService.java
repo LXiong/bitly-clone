@@ -29,8 +29,8 @@ public class BitlyService {
      * @param   originalUrl an absolue Http Url to be shorten
      * @return              The shorten url together with the original one for reference
      */
-    public ShortenLink shorten(String originalUrl) throws MalformedURLException{
-        logger.info("shorten url: {}", originalUrl);
+    public ShortenLink encode(String originalUrl) throws MalformedURLException{
+        logger.info("encode url: {}", originalUrl);
         originalUrl = new URL(originalUrl).toString();
         
         //check if the original url exists in the database
@@ -41,7 +41,7 @@ public class BitlyService {
         //if not, create a new hash
         logger.debug("cannot find {} in database", originalUrl);
         String hash = stringEncoder.encode(originalUrl);
-        URL shortenUrl = new URL(domainUrl, hash);
+        final URL shortenUrl = concatUrl(domainUrl, hash);
         link = new ShortenLinkImpl(originalUrl, shortenUrl.toString());
         
         //put the shorten url to the database
@@ -50,6 +50,20 @@ public class BitlyService {
         
         //output the result
         return link;
+    }
+    
+    
+    public ShortenLink decode(String hash) throws MalformedURLException {
+        logger.info("decode hash: {}", hash);
+        final URL shortenUrl = concatUrl(domainUrl, hash);
+        
+        ShortenLink link = dao.findByShortenUrl(shortenUrl.toString());
+        logger.debug("find url: {}", link.getOriginalUrl());
+        return link;
+    }
+    
+    private static URL concatUrl(URL domainUrl, String sub) throws MalformedURLException {
+        return new URL(domainUrl.toString() + "/" + sub);
     }
     
     //--------------------------------------------------

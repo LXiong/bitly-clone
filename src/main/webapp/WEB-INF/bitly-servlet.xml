@@ -29,7 +29,7 @@
     <mvc:annotation-driven />
  
     <bean id="bitlyService" class="com.bitly.service.BitlyService"> 
-        <property name="domainUrl" value="https://on-device-research-test-josh1313.c9users.io"/>
+        <property name="domainUrl" value="https://on-device-research-test-josh1313.c9users.io/bitly-clone-0.1.0"/>
         <property name="stringEncoder" ref="stringEncoder"/>
         <property name="shortenDao" ref="shortenDao"/>
     </bean>

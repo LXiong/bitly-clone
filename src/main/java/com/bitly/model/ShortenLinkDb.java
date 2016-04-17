@@ -24,6 +24,9 @@ public class ShortenLinkDb implements ShortenLink {
     @Column(name = "CREATE_TIME")
     private Date date;
     
+    public ShortenLinkDb() {
+    }
+    
     public ShortenLinkDb(ShortenLink link) {
         this.originalUrl = link.getOriginalUrl();
         this.shortenUrl = link.getShortenUrl();
