@@ -78,3 +78,9 @@ path: /{shortened url}
 responseheader: http 301 status would response with location equals the original url 
 ```
 
+
+## Known Issues
+As a demostraction, the following issues are not going to be solved, but I know thier existence.
+- The hash of the shortened url may be collided
+- It is supposed to shortened only GET request
+- http-to-https or https-to-http problem
